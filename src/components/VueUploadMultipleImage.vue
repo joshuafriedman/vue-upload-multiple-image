@@ -220,10 +220,10 @@ export default {
         let dataURI = e.target.result
         if (dataURI) {
           if (!this.images.length) {
-            this.images.push({name: file.name, path: dataURI, highlight: 1, default: 1})
+            this.images.push({name: file.name, path: dataURI, highlight: 1, default: 1,real_path: file.path})
             this.currentIndexImage = 0
           } else {
-            this.images.push({name: file.name, path: dataURI, highlight: 0, default: 0})
+            this.images.push({name: file.name, path: dataURI, highlight: 0, default: 0,real_path: file.path})
           }
           this.$emit('upload-success', formData, this.images.length - 1, this.images)
         }
@@ -240,6 +240,7 @@ export default {
           if (this.images.length && this.images[this.currentIndexImage]) {
             this.images[this.currentIndexImage].path = dataURI
             this.images[this.currentIndexImage].name = file.name
+            this.images[this.currentIndexImage].real_path = file.path
           }
         }
       }
